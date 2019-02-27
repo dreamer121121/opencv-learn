@@ -8,3 +8,14 @@ def gamma_trans(img, gamma):
     gamma_table = np.round(np.array(gamma_table)).astype(np.uint8)
     # 实现映射用的是Opencv的查表函数
     return cv2.LUT(img, gamma_table)
+
+
+def Dec2Bin(dec):
+    result = ''
+
+    if dec:
+        result = Dec2Bin(dec // 2)
+        return result + str(dec % 2)
+    else:
+        return result
+
