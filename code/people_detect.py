@@ -13,13 +13,13 @@ def draw_person(image, person):
 img = cv2.imread("../images/people.jpg") #直接进行检测的图像。
 hog = cv2.HOGDescriptor() #获取HOG描述子,总共为105*4*9+1维的特征向量。
 
-hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector()) #调用SVM分类器，已经经过训练的SVM分类器
+
+hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
+#调用SVM分类器，利用HOG特征构建的SVM分类器已经被内置到opencv中
+
 
 found, w = hog.detectMultiScale(img, winStride=(8,8),scale=1.05)
 
-cv2.imshow("people detection", img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
 
 found_filtered = []
 for ri, r in enumerate(found):
@@ -31,3 +31,7 @@ for ri, r in enumerate(found):
 
 for person in found_filtered:
   draw_person(img, person)
+
+cv2.imshow("people detection", img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
