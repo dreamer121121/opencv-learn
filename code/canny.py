@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # 读取原图像
-img = cv2.imread(r"./images/statue_small.jpg")
+img = cv2.imread(r"../images/basil.jpg")
 cv2.imshow("initial_img", img)
 
 # 转换为灰度图像
